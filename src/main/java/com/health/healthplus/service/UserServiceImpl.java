@@ -35,6 +35,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean validateUser(String username, String password) {
 		boolean b = false;
+		// Validating User
 		List<Account> accList = accRepository.findByUsername(username);
 		if (accList != null && accList.size() != 0) {
 			Account acc1 = accList.get(0);
