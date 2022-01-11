@@ -3,14 +3,15 @@ package com.health.healthplus.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -25,28 +26,28 @@ public class SlotAvailability {
     @Column(name="serial_id")
 	private int serial_id;
 	
-	@Column(name="hospital_id")
+	@Column(name="hospital_id", insertable=false, updatable=false)
 	private int hospital_id;
 	
-	@Column(name="doctor_id")
+	@Column(name="doctor_id", insertable=false, updatable=false)
 	private int doctor_id;
 	
-	@Column(name="slot_id")
+	@Column(name="slot_id", insertable=false, updatable=false)
 	private int slot_id;
 	
 	@Column(name="date")
 	private LocalDate date;
 	
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name = "hospital_id", insertable=false, updatable=false)
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "hospital_id")
 	private List<Hospital> hospital;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "slot_id", insertable=false, updatable=false)
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "slot_id")
 	private Slots slot;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "doctor_id", insertable=false, updatable=false)
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "doctor_id")
 	private Doctor doctor;
 	
 	public int getSerial_id() {

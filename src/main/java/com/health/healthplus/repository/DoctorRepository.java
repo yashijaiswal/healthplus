@@ -9,9 +9,9 @@ import org.springframework.stereotype.Repository;
 import com.health.healthplus.model.Doctor;
 
 @Repository
-public interface DoctorRepository extends JpaRepository<Doctor, Long> {
+public interface DoctorRepository extends JpaRepository<Doctor, Integer> {
 
-	@Query(value = "select s, sa, d from Slots s join SlotAvailability sa on (s.slot_id = sa.slot_id) join Doctor d on (sa.doctor_id = d.doctor_id)", nativeQuery = true)
-	List<Doctor> findSlotByDoctor_Id(int doctor_id);
+//	@Query(value = "select d.* from healthplus.slots s join healthplus.slot_availability sa on (s.slot_id = sa.slot_id) join healthplus.doctor d on (sa.doctor_id = d.doctor_id)", nativeQuery = true)
+//	List<Doctor> findSlotByDoctor_Id(int doctor_id);
 
 }

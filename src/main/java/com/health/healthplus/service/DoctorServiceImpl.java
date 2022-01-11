@@ -12,7 +12,7 @@ import com.health.healthplus.repository.DoctorDetailsRepository;
 import com.health.healthplus.repository.DoctorRepository;
 
 @Service
-public class DoctorServiceImpl {
+public class DoctorServiceImpl implements DoctorService {
 
 	@Autowired
 	DoctorRepository doctorRepository;
@@ -24,9 +24,12 @@ public class DoctorServiceImpl {
 		return doctorDetailsRepository.getDoctorsListByCity(city, speciality, date);
 	}
 
-	public List<Doctor> getDoctorSlotByDoctorId(int doctor_id) {
-		return doctorRepository.findSlotByDoctor_Id(doctor_id);
-
-	}
+	/*
+	 * public List<Doctor> getDoctorSlotByDoctorId(int doctor_id) { //return
+	 * doctorRepository.findSlotByDoctor_Id(doctor_id); return
+	 * doctorRepository.findAll();
+	 * 
+	 * }
+	 */
 
 }

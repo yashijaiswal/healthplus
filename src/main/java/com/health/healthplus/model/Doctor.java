@@ -1,6 +1,7 @@
 package com.health.healthplus.model;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +11,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Component
 @Entity
@@ -48,7 +51,7 @@ public class Doctor {
     @Column(name="fee")
 	private int fee;
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "slot_id")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "doctor")
 	private List<SlotAvailability> slotAvailability;
 	
 	public int getDoctor_id() {

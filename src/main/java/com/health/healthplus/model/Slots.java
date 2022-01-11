@@ -14,6 +14,8 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Component
 @Entity
 @Table(name="slots", schema="healthplus")
@@ -27,8 +29,8 @@ public class Slots {
 	@Column(name="slot_time")
 	private LocalTime slot_time;
 	
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name = "slot_id")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "slot")
+	@JsonIgnore
 	private List<SlotAvailability> slotAvailability;
 	
 	public int getSlot_id() {

@@ -54,9 +54,10 @@ public class DoctorController {
 		return "Booking with userId " + userId +  " created Successfully";
 	}
 	
-	@GetMapping("/getDoctorSlotByDoctorId")
-	public List<Doctor> getDoctorSlotByDoctorId(@RequestParam int doctor_id) {
-		return doctorService.getDoctorSlotByDoctorId(doctor_id);
-	}
+	/*
+	 * @GetMapping("/getDoctorSlotByDoctorId") public List<Doctor>
+	 * getDoctorSlotByDoctorId(@RequestParam int doctor_id) { return
+	 * doctorService.getDoctorSlotByDoctorId(doctor_id); }
+	 */
 
 }

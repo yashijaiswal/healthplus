@@ -1,5 +1,6 @@
 package com.health.healthplus.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +10,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Component
 @Entity
@@ -38,7 +42,8 @@ public class Address {
 	@Column(name="pincode")
 	private int pincode;
 	
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "address")
+	@JsonIgnore
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "address", cascade = CascadeType.ALL, optional = false)
 	private Hospital hospital;
 	
 	public int getAddress_id() {
